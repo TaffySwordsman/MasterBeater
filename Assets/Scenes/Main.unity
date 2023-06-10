@@ -248,8 +248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systolic: 120
   diastolic: 80
-  tgtBpm: 60
-  beatStrength: 15
+  tgtSystolic: 120
+  tgtBpm: 40
+  beatStrength: 10
+  money: 0
+  maxEarnRate: 50
 --- !u!212 &763899656
 SpriteRenderer:
   m_ObjectHideFlags: 0

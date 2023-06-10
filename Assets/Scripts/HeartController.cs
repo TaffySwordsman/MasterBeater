@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeartController : MonoBehaviour
 {
     public float systolic = 120f;
     public float diastolic = 80f;
+    public float tgtSystolic = 120f;
     public float tgtBpm = 60f;
     public float beatStrength = 15f;
     
     private float scale = 1.0f;
     private float lastBeat = 0.0f;
 
-    // Components
+    public float money = 0.0f;
+    public float maxEarnRate = 100f;
 
+    private List<float> beats;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        beats = new List<float>();
+        beats.Add(0f);
+        beats.Add(0f);
     }
 
     // Update is called once per frame
@@ -35,16 +41,32 @@ public class HeartController : MonoBehaviour
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
         // Update Pressure
-        Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + (-2*tgtBpm*(Time.time - lastBeat)));
-        systolic -= 2 * tgtBpm * (Time.time - lastBeat) * Time.deltaTime;
+        float decay = (2*tgtBpm*(Time.time - lastBeat));
+        systolic -= decay * Time.deltaTime;
         if (systolic < 0f) {
             systolic = 0f;
         }
         diastolic = systolic - 80f;
+
+        // Score
+        List<float> beatLengths = new List<float>();
+        for (int i = 1; i < beats.Count; ++i) {
+            beatLengths.Add(beats[i] - beats[i-1]);
+        }
+        float consitency = Mathf.Max(-(beatLengths.Max() - beatLengths.Min()) / 1.5f + 1f, 0.3f);
+        float earnRate = Mathf.Max(maxEarnRate - 10f * Mathf.Abs(systolic - tgtSystolic), 0);
+        money += Time.deltaTime * earnRate * consitency;
+
+        if (beats.Count > 10) { // Only read last 10 beats.
+            beats.RemoveAt(0);
+        }
+
+        Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency);
     }
 
     void OnMouseDown() {
         lastBeat = Time.time;
+        beats.Add(Time.time);
         systolic += beatStrength;
         // diastolic += 5;
         scale += .25f;

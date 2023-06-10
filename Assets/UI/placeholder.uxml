@@ -1,8 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="Info" style="flex-grow: 0; background-color: rgba(217, 117, 117, 0.19); align-items: center; justify-content: flex-start; flex-basis: 20%; align-self: auto; flex-direction: row; bottom: auto; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
-            <ui:Label tabindex="-1" text="Pressure" display-tooltip-when-elided="true" name="Pressure" style="-unity-font-style: bold; color: rgb(255, 255, 255);" />
+            <ui:Label tabindex="-1" text="Pressure" display-tooltip-when-elided="true" name="Pressure" style="-unity-font-style: bold; color: rgb(255, 255, 255); flex-direction: row; align-items: flex-start; justify-content: center; align-self: center;" />
             <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" name="Reading" style="color: rgb(255, 255, 255);" />
+            <ui:Label tabindex="-1" text="Money" display-tooltip-when-elided="true" name="Money" style="-unity-font-style: bold; color: rgb(255, 255, 255); flex-direction: row; align-items: flex-start; justify-content: center; align-self: center;" />
+            <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" name="Cash" style="color: rgb(255, 255, 255);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
