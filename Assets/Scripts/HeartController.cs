@@ -8,9 +8,10 @@ public class HeartController : MonoBehaviour
     public float systolic = 120f;
     public float diastolic = 80f;
     public float tgtSystolic = 120f;
-    public float tgtBpm = 60f;
     public float beatStrength = 15f;
-    
+    public float normalBPM = 20f;
+    private float targetBPM;
+
     private float scale = 1.0f;
     private float lastBeat = 0.0f;
 
@@ -22,6 +23,7 @@ public class HeartController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        targetBPM = normalBPM;
         beats = new List<float>();
         beats.Add(0f);
         beats.Add(0f);
@@ -41,7 +43,7 @@ public class HeartController : MonoBehaviour
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
         // Update Pressure
-        float decay = (2*tgtBpm*(Time.time - lastBeat));
+        float decay = (2*targetBPM*(Time.time - lastBeat));
         systolic -= decay * Time.deltaTime;
         if (systolic < 0f) {
             systolic = 0f;
@@ -57,11 +59,13 @@ public class HeartController : MonoBehaviour
         float earnRate = Mathf.Max(maxEarnRate - 10f * Mathf.Abs(systolic - tgtSystolic), 0);
         money += Time.deltaTime * earnRate * consitency;
 
+        float bpm = 1f / (beatLengths.Average() / 60f);
+
         if (beats.Count > 10) { // Only read last 10 beats.
             beats.RemoveAt(0);
         }
 
-        Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency);
+        // Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency + "\t BPM: " + bpm);
     }
 
     void OnMouseDown() {
@@ -70,5 +74,15 @@ public class HeartController : MonoBehaviour
         systolic += beatStrength;
         // diastolic += 5;
         scale += .25f;
+    }
+
+    public void Normalize() {
+        targetBPM = normalBPM;
+        Debug.Log("Normalize");
+    }
+
+    public void SetTargetBPM(float newBPM) {
+        targetBPM = newBPM;
+        Debug.Log(newBPM);
     }
 }
