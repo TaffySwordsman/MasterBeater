@@ -15,6 +15,7 @@ public class HeartController : MonoBehaviour
     public float health = 100f;
     public float safeRange = 0.4f;
     public float recoveryRate = 2f;
+    public float damageRate = 0.05f;
 
     private float scale = 1.0f;
     private float lastBeat = 0.0f;
@@ -52,7 +53,7 @@ public class HeartController : MonoBehaviour
         if (systolic < 0f) {
             systolic = 0f;
         }
-        diastolic = systolic - 80f;
+        diastolic = Mathf.Max(systolic - 40f, 0f);
 
         // Score
         List<float> beatLengths = new List<float>();
@@ -70,15 +71,16 @@ public class HeartController : MonoBehaviour
         }
 
         // Health
-        float maxSafe = systolic * (1f + safeRange);
-        float minSafe = systolic * (1f - safeRange);
+        float maxSafe = tgtSystolic * (1f + safeRange);
+        float minSafe = tgtSystolic * (1f - safeRange);
         if (systolic > maxSafe) {
-            health -= (systolic - maxSafe) * Time.deltaTime;
+            health -= (systolic - maxSafe) * Time.deltaTime * damageRate;
         } else if (systolic < minSafe) {
-            health -= (minSafe - systolic) * Time.deltaTime;
+            health -= (minSafe - systolic) * Time.deltaTime * damageRate;
         } else {
-            health += recoveryRate * Time.deltaTime;
+            health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
+        Debug.Log(health);
         // Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency + "\t BPM: " + bpm);
     }
 
