@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,10 +26,33 @@ public class Dispatch
 
 public class EventDispatch : MonoBehaviour
 {
-    [SerializeField] private UnityEvent normalize;
-    [SerializeField] private UnityEvent exersise;
+    private static EventDispatch _current;
+
+    // OnEnable and Awake can happen simultaneously, causing errors
+    // This is a hotfix to make calling current Find this object if it is null
+    // Was a major issue in Level 1
+    // TODO: Actual fix, this was a hotfix by Brandon
+    public static EventDispatch current
+    {
+        get
+        {
+            if (_current == null) {
+                _current = FindObjectOfType<EventDispatch>();
+            }
+            return _current;
+        }
+        set => _current = value;
+    }
+
+    private void Awake()
+    {
+        current = this;
+    }
 
     public Queue<Dispatch> dispatchQueue;
+
+    [SerializeField] private UnityEvent normalize;
+    [SerializeField] private UnityEvent exersise;
 
     void Start() {
         dispatchQueue = new Queue<Dispatch>();
@@ -46,4 +69,42 @@ public class EventDispatch : MonoBehaviour
             }
         }
     }
+
+    /* ----------------------------------------------------------------------------------------- */
+
+    #region HUD
+    
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------- */
+
+    #region Mechanics
+    
+    public event Action<float> OnNormalize;
+
+    public void SetNormalize(float targetBPM)
+    {
+        OnNormalize?.Invoke(targetBPM);
+    }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------- */
+
+    #region Game State
+
+    public event Action<bool> OnPauseGame;
+
+    public void PauseGame(bool isPaused)
+    {
+        OnPauseGame?.Invoke(isPaused);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    #endregion
+
 }
