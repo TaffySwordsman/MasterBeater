@@ -25,6 +25,21 @@ public class HeartController : MonoBehaviour
 
     private List<float> beats;
 
+    // Upgrades
+    public int AutoPacer = 0;
+    public int BrainInterface = 0;
+    public int BeatModulator = 0;
+    public int MalpracticeDefenseLawyers = 0;
+    public int PerfluorocarbonSurogate = 0;
+    public int IntravanousLubricant = 0;
+    public int EmergencyReleaseValve = 0;
+    public int RevisedTermsOfService = 0;
+
+    public float modulation = 0.15f;            // Percent modulation per level of modulator.
+    public float surrogateResistance = 0.015f;  // Damage resistance per level of perfluorocarbon.
+    public float lubricantBuffer = 0.1f;        // Percent added to safeRange per level of lubricant.
+    public float mineRate = 5f;                 // $ minned per beat per level of TOS.
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,12 +86,12 @@ public class HeartController : MonoBehaviour
         }
 
         // Health
-        float maxSafe = tgtSystolic * (1f + safeRange);
-        float minSafe = tgtSystolic * (1f - safeRange);
+        float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) IntravanousLubricant);
+        float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) IntravanousLubricant);
         if (systolic > maxSafe) {
-            health -= (systolic - maxSafe) * Time.deltaTime * damageRate;
+            health -= (systolic - maxSafe) * Time.deltaTime * (damageRate - surrogateResistance * (float) PerfluorocarbonSurogate);
         } else if (systolic < minSafe) {
-            health -= (minSafe - systolic) * Time.deltaTime * damageRate;
+            health -= (minSafe - systolic) * Time.deltaTime * (damageRate - surrogateResistance * (float) PerfluorocarbonSurogate);
         } else {
             health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
@@ -88,8 +103,14 @@ public class HeartController : MonoBehaviour
         lastBeat = Time.time;
         beats.Add(Time.time);
         systolic += beatStrength;
-        // diastolic += 5;
+        float mod = beatStrength * modulation * (float) BeatModulator;
+        if (systolic > tgtSystolic + mod) {
+            systolic -= mod;
+        } else if (systolic < tgtSystolic - mod) {
+            systolic += mod;
+        }
         scale += .25f;
+        money += RevisedTermsOfService * mineRate;
     }
 
     public void Normalize() {
