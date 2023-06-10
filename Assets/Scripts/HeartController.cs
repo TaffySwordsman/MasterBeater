@@ -95,8 +95,6 @@ public class HeartController : MonoBehaviour
         } else {
             health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
-        Debug.Log(health);
-        // Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency + "\t BPM: " + bpm);
     }
 
     void OnMouseDown() {
