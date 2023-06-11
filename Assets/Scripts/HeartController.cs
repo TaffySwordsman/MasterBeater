@@ -28,6 +28,7 @@ public class HeartController : MonoBehaviour
     public float xp = 0f;
     public float maxEarnRate = 100f;
     public string[] ranks;
+    public string[] rankNewsMessages;
     public float[] rankXp;
     public int currentRank = 0;
     public string currentRankStr;
@@ -178,6 +179,7 @@ public class HeartController : MonoBehaviour
                 currentRank += 1;
                 currentRankStr = ranks[currentRank];
                 Debug.Log("Rank: " + currentRankStr);
+                Debug.Log(rankNewsMessages[currentRank]);
             }
         }
     }
