@@ -155,7 +155,7 @@ public class HeartController : MonoBehaviour
             systolic += mod;
         }
         scale -= .25f;
-        Earn(CashController.current.RevisedTermsOfService * mineRate);
+        CashController.current.EarnBTC(CashController.current.RevisedTermsOfService * mineRate);
     }
 
     public void Normalize() {
@@ -172,8 +172,7 @@ public class HeartController : MonoBehaviour
     }
 
     public void Earn(float addedMoney) {
-        xp += addedMoney;
-        CashController.current.money += addedMoney;
+        xp += CashController.current.EarnWithTax(addedMoney);
         if (currentRank < ranks.Count() - 1) {
             if (xp >= rankXp[currentRank+1]) {
                 currentRank += 1;
