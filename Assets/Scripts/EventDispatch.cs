@@ -80,11 +80,18 @@ public class EventDispatch : MonoBehaviour
 
     #region Mechanics
     
-    public event Action<float> OnNormalize;
+    public event Action OnNormalize;
 
-    public void SetNormalize(float targetBPM)
+    public void SetNormalize()
     {
-        OnNormalize?.Invoke(targetBPM);
+        OnNormalize?.Invoke();
+    }
+
+    public event Action<float> OnSetBPM;
+
+    public void SetBPM(float targetBPM)
+    {
+        OnSetBPM?.Invoke(targetBPM);
     }
 
     #endregion

@@ -12,7 +12,7 @@ public class BPMTest : MonoBehaviour
         text = gameObject.GetComponent<TextMeshProUGUI>();
 
         // add listeners
-        EventDispatch.current.OnNormalize += (f) => UpdateBPM(f);
+        // EventDispatch.current.OnNormalize += (f) => UpdateBPM(f);
     }
 
     // Update is called once per frame
