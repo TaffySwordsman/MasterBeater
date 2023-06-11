@@ -30,6 +30,7 @@ public class HeartController : MonoBehaviour
 
     private List<float> beats;
     private float lastHumanBeat = 0f;
+    private float lastRelease = -50f;              // Time of last release.
 
     [Header("Upgrades")]
     public int AutoPacer = 0;
@@ -48,6 +49,11 @@ public class HeartController : MonoBehaviour
     public float modulation = 0.15f;            // Percent modulation per level of modulator.
     public float surrogateResistance = 0.015f;  // Damage resistance per level of perfluorocarbon.
     public float lubricantBuffer = 0.1f;        // Percent added to safeRange per level of lubricant.
+    public float refractoryPeriod = 20f;        // Cool down for emergency valve.
+    public float refractoryReduction = 3f;      // Refractory reduction per level of release valve.
+    public float releaseRate = 50f;             // Amount of pressure released over the one second of valve opening.
+    public float releasePenalty = 10f;          // Penalty to beat strength for emergency release.
+    public float releasePenaltyRecution = 2f;   // Reduction of the penalty per level of emergency valve.
     public float mineRate = 5f;                 // $ minned per beat per level of TOS.
 
     // Start is called before the first frame update
@@ -84,8 +90,20 @@ public class HeartController : MonoBehaviour
         }
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
+        // Pressure Range
+        float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) IntravanousLubricant);
+        float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) IntravanousLubricant);
+        float overPressure = tgtSystolic * 1.5f;
+
         // Update Pressure
         float decay = (2*targetBPM*(Time.time - lastBeat));
+        if (systolic > overPressure && EmergencyReleaseValve > 0 && Time.time - lastRelease > refractoryPeriod) {  // Emergency Valve
+            lastRelease = Time.time;
+            Debug.Log("OVERPRESSURE!");
+        }
+        if (Time.time - lastRelease <= refractoryPeriod) {
+            decay += releaseRate;
+        }
         systolic -= decay * Time.deltaTime;
         if (systolic < 0f) {
             systolic = 0f;
@@ -108,8 +126,6 @@ public class HeartController : MonoBehaviour
         }
 
         // Health
-        float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) IntravanousLubricant);
-        float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) IntravanousLubricant);
         if (systolic > maxSafe) {
             health -= (systolic - maxSafe) * Time.deltaTime * (damageRate - surrogateResistance * (float) PerfluorocarbonSurogate);
         } else if (systolic < minSafe) {
@@ -127,6 +143,13 @@ public class HeartController : MonoBehaviour
     void Beat() {
         lastBeat = Time.time;
         beats.Add(Time.time);
+
+        float beat = beatStrength;
+        
+        // Release Penalty
+        float timeSinceRelease = Time.time - lastRelease;
+        beat *= Mathf.Min((1 - timeSinceRelease / refractoryPeriod) * (releasePenalty - releasePenaltyRecution * EmergencyReleaseValve), 1.0f);
+
         systolic += beatStrength;
         float mod = beatStrength * modulation * (float) BeatModulator;
         if (systolic > tgtSystolic + mod) {
