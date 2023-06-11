@@ -24,9 +24,7 @@ public class HeartController : MonoBehaviour
     private float scale = 1.0f;
     private float lastBeat = 0.0f;
 
-
     [Header("Score")]
-    public float money = 0.0f;
     public float xp = 0f;
     public float maxEarnRate = 100f;
     public string[] ranks;
@@ -39,16 +37,6 @@ public class HeartController : MonoBehaviour
     private float lastRelease = -50f;              // Time of last release.
 
     private RectTransform rt;
-
-    [Header("Upgrades")]
-    public int AutoPacer = 0;
-    public int BrainInterface = 0;
-    public int BeatModulator = 0;
-    public int MalpracticeDefenseLawyers = 0;
-    public int PerfluorocarbonSurogate = 0;
-    public int IntravanousLubricant = 0;
-    public int EmergencyReleaseValve = 0;
-    public int RevisedTermsOfService = 0;
 
     [Header("Upgrade Affects")]
     public float autoBeatRevUp = 5f;            // Time before autobeat kicks in. 
@@ -84,8 +72,8 @@ public class HeartController : MonoBehaviour
     {
         // Autobeat
         // Beat if revup period is over and it's past autoBeatRate seconds.
-        if (AutoPacer > 0 &&
-            Time.time - lastHumanBeat > autoBeatRevUp - autoBeatRevReduction * AutoPacer && 
+        if (CashController.current.AutoPacer > 0 &&
+            Time.time - lastHumanBeat > autoBeatRevUp - autoBeatRevReduction * CashController.current.AutoPacer && 
             Time.time - lastBeat > autoBeatRate) {
             Beat();
         }
@@ -101,13 +89,13 @@ public class HeartController : MonoBehaviour
         rt.localScale = new Vector3(scale, scale, scale);
 
         // Pressure Range
-        float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) IntravanousLubricant);
-        float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) IntravanousLubricant);
+        float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) CashController.current.IntravanousLubricant);
+        float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) CashController.current.IntravanousLubricant);
         float overPressure = tgtSystolic * 1.85f;
 
         // Update Pressure
         float decay = (2*targetBPM*(Time.time - lastBeat));
-        if (systolic > overPressure && EmergencyReleaseValve > 0 && Time.time - lastRelease > refractoryPeriod) {  // Emergency Valve
+        if (systolic > overPressure && CashController.current.EmergencyReleaseValve > 0 && Time.time - lastRelease > refractoryPeriod) {  // Emergency Valve
             lastRelease = Time.time;
         }
         if (Time.time - lastRelease <= 1.0f && systolic > minSafe) {
@@ -136,9 +124,9 @@ public class HeartController : MonoBehaviour
 
         // Health
         if (systolic > maxSafe) {
-            health -= (systolic - maxSafe) * Time.deltaTime * (damageRate - surrogateResistance * (float) PerfluorocarbonSurogate);
+            health -= (systolic - maxSafe) * Time.deltaTime * (damageRate - surrogateResistance * (float) CashController.current.PerfluorocarbonSurogate);
         } else if (systolic < minSafe) {
-            health -= (minSafe - systolic) * Time.deltaTime * (damageRate - surrogateResistance * (float) PerfluorocarbonSurogate);
+            health -= (minSafe - systolic) * Time.deltaTime * (damageRate - surrogateResistance * (float) CashController.current.PerfluorocarbonSurogate);
         } else {
             health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
@@ -157,17 +145,17 @@ public class HeartController : MonoBehaviour
         
         // Release Penalty
         float timeSinceRelease = Time.time - lastRelease;
-        beat *= Mathf.Min((1 - timeSinceRelease / refractoryPeriod) * (releasePenalty - releasePenaltyRecution * EmergencyReleaseValve), 1.0f);
+        beat *= Mathf.Min((1 - timeSinceRelease / refractoryPeriod) * (releasePenalty - releasePenaltyRecution * CashController.current.EmergencyReleaseValve), 1.0f);
 
         systolic += beatStrength;
-        float mod = beatStrength * modulation * (float) BeatModulator;
+        float mod = beatStrength * modulation * (float) CashController.current.BeatModulator;
         if (systolic > tgtSystolic + mod) {
             systolic -= mod;
         } else if (systolic < tgtSystolic - mod) {
             systolic += mod;
         }
         scale -= .25f;
-        Earn(RevisedTermsOfService * mineRate);
+        Earn(CashController.current.RevisedTermsOfService * mineRate);
     }
 
     public void Normalize() {
@@ -185,7 +173,7 @@ public class HeartController : MonoBehaviour
 
     public void Earn(float addedMoney) {
         xp += addedMoney;
-        money += addedMoney;
+        CashController.current.money += addedMoney;
         if (currentRank < ranks.Count() - 1) {
             if (xp >= rankXp[currentRank+1]) {
                 currentRank += 1;

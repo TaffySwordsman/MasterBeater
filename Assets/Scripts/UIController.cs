@@ -19,6 +19,6 @@ public class UIController : MonoBehaviour
     void Update()
     {
         reading.text = heart.systolic.ToString("0.") + " / " + heart.diastolic.ToString("0.");
-        cash.text = "$" + heart.money.ToString("0.00");
+        cash.text = "$" + CashController.current.money.ToString("0.00");
     }
 }
