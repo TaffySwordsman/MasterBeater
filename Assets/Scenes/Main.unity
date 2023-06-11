@@ -1041,7 +1041,7 @@ MonoBehaviour:
   damageRate: 0.5
   money: 0
   maxEarnRate: 50
-  AutoPacer: 1
+  AutoPacer: 0
   BrainInterface: 0
   BeatModulator: 0
   MalpracticeDefenseLawyers: 0
@@ -1055,6 +1055,11 @@ MonoBehaviour:
   modulation: 0.15
   surrogateResistance: 0.015
   lubricantBuffer: 0.1
+  refractoryPeriod: 20
+  refractoryReduction: 3
+  releaseRate: 150
+  releasePenalty: 10
+  releasePenaltyRecution: 2
   mineRate: 5
 --- !u!224 &763899657
 RectTransform:

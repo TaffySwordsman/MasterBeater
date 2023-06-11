@@ -96,7 +96,7 @@ public class HeartController : MonoBehaviour
         // Pressure Range
         float maxSafe = tgtSystolic * (1f + safeRange + lubricantBuffer * (float) IntravanousLubricant);
         float minSafe = tgtSystolic * (1f - safeRange + lubricantBuffer * (float) IntravanousLubricant);
-        float overPressure = tgtSystolic * 1.5f;
+        float overPressure = tgtSystolic * 1.85f;
 
         // Update Pressure
         float decay = (2*targetBPM*(Time.time - lastBeat));
@@ -104,8 +104,9 @@ public class HeartController : MonoBehaviour
             lastRelease = Time.time;
             Debug.Log("OVERPRESSURE!");
         }
-        if (Time.time - lastRelease <= refractoryPeriod) {
+        if (Time.time - lastRelease <= 1.0f && systolic > minSafe) {
             decay += releaseRate;
+            Debug.Log("Decay: " + decay);
         }
         systolic -= decay * Time.deltaTime;
         if (systolic < 0f) {
