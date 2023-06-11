@@ -30,6 +30,7 @@ public class HeartController : MonoBehaviour
 
     private List<float> beats;
     private float lastHumanBeat = 0f;
+    private RectTransform rt;
 
     [Header("Upgrades")]
     public int AutoPacer = 0;
@@ -53,6 +54,7 @@ public class HeartController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rt = gameObject.GetComponent<RectTransform>();
         targetBPM = normalBPM;
         beats = new List<float>();
         beats.Add(0f);
@@ -75,14 +77,14 @@ public class HeartController : MonoBehaviour
         }
 
         // Beat Scale
-        if (scale > 1f) {
-            scale -= Time.deltaTime * 1.0f;
-        } else if (scale > 1.5f) {
-            scale = 1.5f;
+        if (scale < 1f) {
+            scale += Time.deltaTime * 1.0f;
+        } else if (scale < 0.5f) {
+            scale = 0.5f;
         } else {
             scale = 1f;
         }
-        gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        rt.localScale = new Vector3(scale, scale, scale);
 
         // Update Pressure
         float decay = (2*targetBPM*(Time.time - lastBeat));
@@ -119,7 +121,7 @@ public class HeartController : MonoBehaviour
         }
     }
 
-    void OnMouseDown() {
+    public void MouseDown() {
         lastHumanBeat = Time.time;
         Beat();
     }
