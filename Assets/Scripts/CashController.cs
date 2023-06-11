@@ -5,6 +5,7 @@ using UnityEngine;
 public class CashController : MonoBehaviour
 {    
     public float money = 0.0f;
+    public float btc = 0.0f;
     public float taxRate = 35f;
     public float employeeTick = 10f;
     private float lastTick = 0f;
@@ -71,7 +72,24 @@ public class CashController : MonoBehaviour
     }
     
     public float EarnBTC(float mined) {
-        return EarnWithTax(mined);
+        btc += mined;
+        return mined;
+        // return EarnWithTax(mined);
+    }
+
+    public void SellBTC() {
+        EarnWithTax(BTCPrice() * btc);
+        btc = 0;
+    }
+
+    public float BTCPrice() {
+        float x = Time.time - 50f;
+        float m = 5.6f;
+        float f = Mathf.Sin(x)+Mathf.Cos(2f*x-2f)-Mathf.Cos(x/2f-2f)+Mathf.Sin(2f*x+4f)+Mathf.Cos(3f*x)-Mathf.Sin(x/2f+5f);
+        float g = m*Mathf.Sin(x/30f) - 2f*m*Mathf.Sin((x-60f)/40f) - 1.5f*m*Mathf.Cos((2f*x-20f)/35f) + 1.5f*m*Mathf.Cos(x/27.3f);
+        float p = Mathf.Sin(8f*x-2f)+Mathf.Sin(9f*x-5f);
+
+        return (f + g + p + 35f) * 25000f;
     }
     
     public float EarnWithTax(float income) {
