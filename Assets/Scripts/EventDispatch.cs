@@ -94,6 +94,12 @@ public class EventDispatch : MonoBehaviour
         OnSetBPM?.Invoke(targetBPM);
     }
 
+    public event Action<float> OnSetBeatStrength;
+
+    public void SetBeatStrength(float beatStrength)
+    {
+        OnSetBeatStrength?.Invoke(beatStrength);
+    }
     #endregion
 
     /* ----------------------------------------------------------------------------------------- */

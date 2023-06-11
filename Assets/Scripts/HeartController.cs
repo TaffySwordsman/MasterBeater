@@ -9,7 +9,8 @@ public class HeartController : MonoBehaviour
     public float systolic = 120f;
     public float diastolic = 80f;
     public float tgtSystolic = 120f;
-    public float beatStrength = 15f;
+    public float normalBeatStrength = 15f;
+    public float beatStrength;
     public float normalBPM = 20f;
     private float targetBPM;
     public float BPM;
@@ -67,7 +68,7 @@ public class HeartController : MonoBehaviour
     void Start()
     {
         rt = gameObject.GetComponent<RectTransform>();
-        targetBPM = normalBPM;
+        Normalize();
         beats = new List<float>();
         beats.Add(0f);
         beats.Add(0f);
@@ -75,7 +76,7 @@ public class HeartController : MonoBehaviour
 
         EventDispatch.current.OnNormalize += () => Normalize();
         EventDispatch.current.OnSetBPM += (newBPM) => SetTargetBPM(newBPM);
-
+        EventDispatch.current.OnSetBeatStrength += (newStrength) => SetBeatStrength(newStrength);
     }
 
     // Update is called once per frame
@@ -171,10 +172,15 @@ public class HeartController : MonoBehaviour
 
     public void Normalize() {
         targetBPM = normalBPM;
+        beatStrength = normalBeatStrength;
     }
 
     public void SetTargetBPM(float newBPM) {
         targetBPM = newBPM;
+    }
+
+    public void SetBeatStrength(float newStrength) {
+        beatStrength = newStrength;
     }
 
     public void Earn(float addedMoney) {
