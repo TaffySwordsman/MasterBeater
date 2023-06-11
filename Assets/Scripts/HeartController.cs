@@ -24,9 +24,14 @@ public class HeartController : MonoBehaviour
     private float lastBeat = 0.0f;
 
 
-    [Header("Money")]
+    [Header("Score")]
     public float money = 0.0f;
+    public float xp = 0f;
     public float maxEarnRate = 100f;
+    public string[] ranks;
+    public float[] rankXp;
+    public int currentRank = 0;
+    public string currentRankStr;
 
     private List<float> beats;
     private float lastHumanBeat = 0f;
@@ -66,6 +71,7 @@ public class HeartController : MonoBehaviour
         beats = new List<float>();
         beats.Add(0f);
         beats.Add(0f);
+        currentRankStr = ranks[currentRank];
 
         EventDispatch.current.OnNormalize += () => Normalize();
         EventDispatch.current.OnSetBPM += (newBPM) => SetTargetBPM(newBPM);
@@ -102,11 +108,9 @@ public class HeartController : MonoBehaviour
         float decay = (2*targetBPM*(Time.time - lastBeat));
         if (systolic > overPressure && EmergencyReleaseValve > 0 && Time.time - lastRelease > refractoryPeriod) {  // Emergency Valve
             lastRelease = Time.time;
-            Debug.Log("OVERPRESSURE!");
         }
         if (Time.time - lastRelease <= 1.0f && systolic > minSafe) {
             decay += releaseRate;
-            Debug.Log("Decay: " + decay);
         }
         systolic -= decay * Time.deltaTime;
         if (systolic < 0f) {
@@ -121,7 +125,7 @@ public class HeartController : MonoBehaviour
         }
         float consitency = Mathf.Max(-(beatLengths.Max() - beatLengths.Min()) / 1.5f + 1f, 0.3f);
         float earnRate = Mathf.Max(maxEarnRate - 10f * Mathf.Abs(systolic - tgtSystolic), 0);
-        money += Time.deltaTime * earnRate * consitency;
+        Earn(Time.deltaTime * earnRate * consitency);
 
         BPM = 1f / (beatLengths.Average() / 60f);
 
@@ -162,7 +166,7 @@ public class HeartController : MonoBehaviour
             systolic += mod;
         }
         scale -= .25f;
-        money += RevisedTermsOfService * mineRate;
+        Earn(RevisedTermsOfService * mineRate);
     }
 
     public void Normalize() {
@@ -172,4 +176,17 @@ public class HeartController : MonoBehaviour
     public void SetTargetBPM(float newBPM) {
         targetBPM = newBPM;
     }
+
+    public void Earn(float addedMoney) {
+        xp += addedMoney;
+        money += addedMoney;
+        if (currentRank < ranks.Count() - 1) {
+            if (xp >= rankXp[currentRank+1]) {
+                currentRank += 1;
+                currentRankStr = ranks[currentRank];
+                Debug.Log("Rank: " + currentRankStr);
+            }
+        }
+    }
+
 }
