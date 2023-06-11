@@ -19,10 +19,12 @@ public class HeartController : MonoBehaviour
     public float maxEarnRate = 100f;
 
     private List<float> beats;
+    private RectTransform rt;
 
     // Start is called before the first frame update
     void Start()
     {
+        rt = gameObject.GetComponent<RectTransform>();
         targetBPM = normalBPM;
         beats = new List<float>();
         beats.Add(0f);
@@ -33,14 +35,14 @@ public class HeartController : MonoBehaviour
     void Update()
     {
         // Beat Scale
-        if (scale > 1f) {
-            scale -= Time.deltaTime * 1.0f;
-        } else if (scale > 1.5f) {
-            scale = 1.5f;
+        if (scale < 1f) {
+            scale += Time.deltaTime * 1.0f;
+        } else if (scale < 0.5f) {
+            scale = 0.5f;
         } else {
             scale = 1f;
         }
-        gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        rt.localScale = new Vector3(scale, scale, scale);
 
         // Update Pressure
         float decay = (2*targetBPM*(Time.time - lastBeat));
@@ -68,12 +70,12 @@ public class HeartController : MonoBehaviour
         // Debug.Log("Blood Pressure: " + systolic + "/" + diastolic + "\tDecay: " + decay + "\tEarn: " + earnRate + "\tConsitency: " + consitency + "\t BPM: " + bpm);
     }
 
-    void OnMouseDown() {
+    public void MouseDown() {
         lastBeat = Time.time;
         beats.Add(Time.time);
         systolic += beatStrength;
         // diastolic += 5;
-        scale += .25f;
+        scale -= .25f;
     }
 
     public void Normalize() {
