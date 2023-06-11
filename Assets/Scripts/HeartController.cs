@@ -136,7 +136,7 @@ public class HeartController : MonoBehaviour
         } else if (systolic < tgtSystolic - mod) {
             systolic += mod;
         }
-        scale += .25f;
+        scale -= .25f;
         money += RevisedTermsOfService * mineRate;
     }
 
