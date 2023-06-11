@@ -1032,6 +1032,7 @@ MonoBehaviour:
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
+  normalBeatStrength: 15
   beatStrength: 15
   normalBPM: 20
   BPM: 0
@@ -1040,7 +1041,22 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   money: 0
+  xp: 0
   maxEarnRate: 50
+  ranks:
+  - Beating Intern
+  - Associate Beater
+  - Beat Manager
+  - Senior Vice Beater
+  - CBO
+  rankXp:
+  - 500
+  - 1000
+  - 2500
+  - 5000
+  - 10000
+  currentRank: 0
+  currentRankStr: 
   AutoPacer: 0
   BrainInterface: 0
   BeatModulator: 0
@@ -1342,6 +1358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680ccf72139ec4c489f4a9806bda2435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  averageWait: 40
+  waitRange: 20
   normalize:
     m_PersistentCalls:
       m_Calls: []
