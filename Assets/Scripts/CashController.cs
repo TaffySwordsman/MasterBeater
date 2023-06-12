@@ -18,6 +18,7 @@ public class CashController : MonoBehaviour
     private float lastBTCTick = 0f;
     private float lastBTCEvent = 0f;
     private Random rng;
+    private AudioSource audioData;
 
     [Header("Upgrades")]
     public int AutoPacer = 0;
@@ -56,6 +57,7 @@ public class CashController : MonoBehaviour
     void Start()
     {
         rng = new Random();
+        audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -132,6 +134,15 @@ public class CashController : MonoBehaviour
         float postTax = NetTaxRate() * income;
         money += income;
         return income;
+    }
+
+    public bool Spend(float expense) {
+        if (money >= expense) {
+            audioData.Play();
+            money -= expense;
+            return true;
+        }
+        return false;
     }
     
     private static CashController _current;

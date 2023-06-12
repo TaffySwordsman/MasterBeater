@@ -6,6 +6,7 @@ using UnityEngine;
 public class HeartController : MonoBehaviour
 {
     public RankDisplay rankDisplay;
+    private AudioSource audioData;
 
     [Header("Cardio")]
     public float systolic = 120f;
@@ -65,6 +66,7 @@ public class HeartController : MonoBehaviour
         beats.Add(0f);
         currentRankStr = ranks[currentRank];
         rankDisplay.UpdateRank(currentRankStr);
+        audioData = GetComponent<AudioSource>();
 
         EventDispatch.current.OnNormalize += () => Normalize();
         EventDispatch.current.OnSetBPM += (newBPM) => SetTargetBPM(newBPM);
@@ -142,6 +144,7 @@ public class HeartController : MonoBehaviour
     }
 
     void Beat() {
+        audioData.Play();
         lastBeat = Time.time;
         beats.Add(Time.time);
 
