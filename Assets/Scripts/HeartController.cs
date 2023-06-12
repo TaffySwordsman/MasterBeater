@@ -206,6 +206,7 @@ public class HeartController : MonoBehaviour
             if (xp >= rankXp[currentRank+1]) {
                 currentRank += 1;
                 currentRankStr = ranks[currentRank];
+                rankDisplay.UpdateRank(currentRankStr);
                 Debug.Log(rankNewsMessages[currentRank]);
             }
         }
