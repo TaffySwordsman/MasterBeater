@@ -11,7 +11,7 @@ staff to manage your company and buy upgrades to improve the service for your us
    the 70 to 190 of a newborn.
  - Heart attacks happen most often on Mnday mornings.
  - In the state of Virginia, the average Medical Malpractice Attorney makes $114,805 or 
-   about 4.45 bitcoin.  This about .41 bitcoin less than the national average.
+   about 4.45 bitcoin.  This is about .41 bitcoin less than the national average.
  - Every day, your heart pumps 2,000 gallons of blood.
  - Nobody knows how the heart became associated with love and emotion.
  - A study showed that horses can sync up their heart with the heart beat of a person 
