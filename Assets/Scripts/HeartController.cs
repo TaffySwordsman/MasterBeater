@@ -8,6 +8,7 @@ public class HeartController : MonoBehaviour
 {
     public RankDisplay rankDisplay;
     public PostProcessVolume volume;
+    public News news;
     private Vignette vignette;
     private AudioSource audioData;
 
@@ -90,6 +91,11 @@ public class HeartController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (beats.Count < 3) {
+            return;
+        }
+
         // Autobeat
         // Beat if revup period is over and it's past autoBeatRate seconds.
         if (CashController.current.AutoPacer > 0 &&
@@ -156,8 +162,7 @@ public class HeartController : MonoBehaviour
             health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
         health = Mathf.Max(health, 0f);
-        vignette.intensity.value = 0.66f - health / 100f;
-        Debug.Log(vignette.intensity.value);
+        vignette.intensity.value = 0.53f - health / 100f;
     }
 
     public void MouseDown() {
@@ -207,7 +212,7 @@ public class HeartController : MonoBehaviour
                 currentRank += 1;
                 currentRankStr = ranks[currentRank];
                 rankDisplay.UpdateRank(currentRankStr);
-                Debug.Log(rankNewsMessages[currentRank]);
+                news.RunHeadline(rankNewsMessages[currentRank]);
             }
         }
     }
