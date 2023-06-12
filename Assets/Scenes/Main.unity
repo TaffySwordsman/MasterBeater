@@ -10815,7 +10815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 424.2, y: -346.00003}
+  m_AnchoredPosition: {x: 430.5, y: -251.18}
   m_SizeDelta: {x: 81.49, y: 31.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536135258
@@ -12283,7 +12283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708.95044, y: -15}
+  m_AnchoredPosition: {x: -448, y: -15}
   m_SizeDelta: {x: 102.11, y: 70.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616037043
@@ -12299,7 +12299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19997,7 +19997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 563.11, y: -15}
+  m_AnchoredPosition: {x: 554, y: -15}
   m_SizeDelta: {x: 393.79, y: 70.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970974270
@@ -20013,7 +20013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20505,7 +20505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1543386394}
   btn: {fileID: 1000518439}
-  cost: 10000
+  cost: 10
 --- !u!114 &1000518439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21569,11 +21569,11 @@ MonoBehaviour:
   lossRate: 100
   ranks:
   - Beat Novice
-  - Beating Intern
-  - Associate Beater
-  - Beat Manager
-  - Senior Vice Beater
-  - CBO
+  - Private Beater
+  - Petty Warrant Beater
+  - Major Beater
+  - Brigadier Beater
+  - Beater in Chief
   rankNewsMessages: []
   rankXp:
   - 0
@@ -34364,12 +34364,12 @@ MonoBehaviour:
   maxEarnRate: 50
   lossRate: 100
   ranks:
-  - Beat Novice
-  - Beating Intern
-  - Associate Beater
-  - Beat Manager
-  - Senior Vice Beater
-  - CBO
+  - Beat Patient
+  - Resident Beater
+  - Beating Practicioner
+  - Beatologist
+  - Beatmaster General
+  - Ph. B
   rankNewsMessages: []
   rankXp:
   - 0
