@@ -15086,20 +15086,20 @@ MonoBehaviour:
   - 'User is doing an intense exercise.  '
   - User out in extreme summer heat.
   - User just ate a huge burrito.
-  minElevatedBPM: 40
-  maxElevatedBPM: 80
+  minElevatedBPM: 25
+  maxElevatedBPM: 40
   strengthEventMessages:
   - User is on a date, heart is pounding.
   - User starting speach in public, high anxiety levels.
   - User is in the last hour of a Game Jam, the pressure is on.
   minStengthBoost: 20
-  maxStrengthBoost: 60
+  maxStrengthBoost: 30
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
   normalBeatStrength: 15
   beatStrength: 15
-  normalBPM: 20
+  normalBPM: 15
   BPM: 0
   averageWait: 40
   waitRange: 20
@@ -15108,8 +15108,8 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 50
-  lossRate: 100
+  maxEarnRate: 80
+  lossRate: 80
   ranks:
   - Beat Novice
   - Beating Intern
@@ -21588,19 +21588,19 @@ MonoBehaviour:
   - Soldier bit by gigantic alien spider.
   - Heart stopped in gunship crash.  Automatic AED restarting.
   - Soldier under intense surpressing fire.
-  minElevatedBPM: 40
-  maxElevatedBPM: 80
+  minElevatedBPM: 50
+  maxElevatedBPM: 100
   strengthEventMessages:
   - Soldier shot by phaser in glancing blow.
   - Soldier rescuing squadmate in heated gunfight.
   - Soldier entering melee combat with gigantic alien spider.
-  minStengthBoost: 20
-  maxStrengthBoost: 60
+  minStengthBoost: 40
+  maxStrengthBoost: 100
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
   normalBeatStrength: 15
-  beatStrength: 15
+  beatStrength: 30
   normalBPM: 20
   BPM: 0
   averageWait: 40
@@ -21610,7 +21610,7 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 50
+  maxEarnRate: 300
   lossRate: 100
   ranks:
   - Recruit
@@ -34400,14 +34400,14 @@ MonoBehaviour:
   - Patient going into cardiac sugury.
   - Patient starting drug treatment.
   - Patient has eaten medium rare chicken in the cafe.
-  minElevatedBPM: 40
+  minElevatedBPM: 50
   maxElevatedBPM: 80
   strengthEventMessages:
   - Patient awoke during surgury.
   - Patient really needs to go to the bathroom.  Like reeeallllyyy badly.
   - Patient slipped getting out of the hospital bed.
   minStengthBoost: 20
-  maxStrengthBoost: 60
+  maxStrengthBoost: 50
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
@@ -34422,7 +34422,7 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 50
+  maxEarnRate: 152
   lossRate: 100
   ranks:
   - Med Student
