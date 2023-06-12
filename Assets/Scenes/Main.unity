@@ -34900,8 +34900,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 780, y: -3.8999996}
-  m_SizeDelta: {x: 12306.68, y: 191.07}
+  m_AnchoredPosition: {x: 776, y: 0.0000009536743}
+  m_SizeDelta: {x: 14930.05, y: 191.07}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1812987909
 MonoBehaviour:
@@ -34948,8 +34948,8 @@ MonoBehaviour:
     is on the bleading edge of MedTech, we stay on the bleeding edge.  Invest in
     upgrades to improve our service and lower opperating costs."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ae23adc23df5be64782b9617bf206c2f, type: 2}
-  m_sharedMaterial: {fileID: 2373021276287785316, guid: ae23adc23df5be64782b9617bf206c2f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7e68e96129d152a48b9bcf4acb56304a, type: 2}
+  m_sharedMaterial: {fileID: -2272717187533997002, guid: 7e68e96129d152a48b9bcf4acb56304a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -34979,7 +34979,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
