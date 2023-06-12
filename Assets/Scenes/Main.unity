@@ -15059,13 +15059,15 @@ MonoBehaviour:
   volume: {fileID: 0}
   news: {fileID: 1812987909}
   bpmEventMessages:
-  - BPM Message 1
-  - BPM Message 2
+  - 'User is doing an intense exercise.  '
+  - User out in extreme summer heat.
+  - User just ate a huge burrito.
   minElevatedBPM: 40
   maxElevatedBPM: 80
   strengthEventMessages:
-  - STR Message 1
-  - STR Message 2
+  - User is on a date, heart is pounding.
+  - User starting speach in public, high anxiety levels.
+  - User is in the last hour of a Game Jam, the pressure is on.
   minStengthBoost: 20
   maxStrengthBoost: 60
   systolic: 120
@@ -21544,11 +21546,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankDisplay: {fileID: 433693678}
   volume: {fileID: 0}
-  news: {fileID: 0}
-  bpmEventMessages: []
+  news: {fileID: 1812987909}
+  bpmEventMessages:
+  - Soldier bit by gigantic alien spider.
+  - Heart stopped in gunship crash.  Automatic AED restarting.
+  - Soldier under intense surpressing fire.
   minElevatedBPM: 40
   maxElevatedBPM: 80
-  strengthEventMessages: []
+  strengthEventMessages:
+  - Soldier shot by phaser in glancing blow.
+  - Soldier rescuing squadmate in heated gunfight.
+  - Soldier entering melee combat with gigantic alien spider.
   minStengthBoost: 20
   maxStrengthBoost: 60
   systolic: 120
@@ -21568,13 +21576,22 @@ MonoBehaviour:
   maxEarnRate: 50
   lossRate: 100
   ranks:
-  - Beat Novice
-  - Beating Intern
-  - Associate Beater
-  - Beat Manager
-  - Senior Vice Beater
-  - CBO
-  rankNewsMessages: []
+  - Recruit
+  - Private Beater
+  - Chief Petty Warrant Beater
+  - Major Beater
+  - Brigadier Beater
+  - Beater in Chief
+  rankNewsMessages:
+  - MyBeat beggins secretive defense research project.
+  - MyBeat announces partnership with DoD.  President denies knowledge of recent
+    UFO sitings.
+  - After nuclear explosion on the Moon, US formaly declares war on Aliens.
+  - After fierce sea battle, the Navy Second Fleet has failed to prevent the aliens
+    from stealing New York.
+  - Recently declassified SuperSoldier program may be humanity's last hope, analysts
+    say.
+  - Victory!  Mothership destroyed in boarding action by lone Cyborg Comando.
   rankXp:
   - 0
   - 500
@@ -34340,11 +34357,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankDisplay: {fileID: 433693678}
   volume: {fileID: 0}
-  news: {fileID: 0}
-  bpmEventMessages: []
+  news: {fileID: 1812987909}
+  bpmEventMessages:
+  - Patient going into cardiac sugury.
+  - Patient starting drug treatment.
+  - Patient has eaten medium rare chicken in the cafe.
   minElevatedBPM: 40
   maxElevatedBPM: 80
-  strengthEventMessages: []
+  strengthEventMessages:
+  - Patient awoke during surgury.
+  - Patient really needs to go to the bathroom.  Like reeeallllyyy badly.
+  - Patient slipped getting out of the hospital bed.
   minStengthBoost: 20
   maxStrengthBoost: 60
   systolic: 120
@@ -34364,13 +34387,26 @@ MonoBehaviour:
   maxEarnRate: 50
   lossRate: 100
   ranks:
-  - Beat Novice
-  - Beating Intern
-  - Associate Beater
-  - Beat Manager
-  - Senior Vice Beater
-  - CBO
-  rankNewsMessages: []
+  - Med Student
+  - Resident Beater
+  - 'Beating Practitioner '
+  - Beatologist
+  - Ph. B
+  - Beat Surgeon General
+  rankNewsMessages:
+  - MyBeat artificial hearts have started to become part of standard treatment in
+    many hospitals.
+  - Cardio as a Service (CSS) found to reduce risk of various heart conditions in
+    study of the 16 middle-class, male, college students we found in the university
+    cafeteria.
+  - Meta-anlysis of MyBeat Clinical Trails and WW2 Historical Records reveals that,
+    of all 170,000 deaths due to nuclear bombings, 0 were MyBeat users.
+  - Harvard Study shows Cardio as a Service customers are able to consume 800% more
+    microplastics more than the average person with minimal side affects.
+  - Space Station Study demonstrates MyBeat heart's ability to reduce muscle atrophy
+    in long duration space flight by 85%.
+  - The WHO announces it's parternship with MyBeat has finally erradicated malaria,
+    HIV, and tuberculosis.
   rankXp:
   - 0
   - 500
