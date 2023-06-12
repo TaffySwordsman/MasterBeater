@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1331239008}
   btn: {fileID: 700779512}
-  cost: 4000
+  cost: 3000
 --- !u!222 &59551158
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1525,15 +1525,15 @@ MonoBehaviour:
   Recruiter: 0
   HRGeneralists: 0
   Pinkertons: 0
-  MarketingSpecialistsAffect: 25
-  CustomerServiceAffect: 100
-  SalesRepsAffect: 1000
+  MarketingSpecialistsAffect: 50
+  CustomerServiceAffect: 150
+  SalesRepsAffect: 300
   AccountantsAffect: 10
   IRSInvestigatorsAffect: 25
-  SenatorsAffect: 40
+  SenatorsAffect: 50
   RecruiterAffect: 2
   HRGeneralistsAffect: 3
-  PinkertonsAffect: 4
+  PinkertonsAffect: 3
 --- !u!222 &80726853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4479,7 +4479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 2087245892}
   btn: {fileID: 749043924}
-  cost: 8000
+  cost: 5000
 --- !u!1 &232066407
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,7 +4586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reduces death penalty
+  m_text: Reduces penalty of being low health.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5350,6 +5350,7 @@ RectTransform:
   m_Children:
   - {fileID: 209127520}
   - {fileID: 633078964}
+  - {fileID: 429275038}
   m_Father: {fileID: 1351534881}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7838,6 +7839,7 @@ RectTransform:
   m_Children:
   - {fileID: 596289640}
   - {fileID: 1000518437}
+  - {fileID: 1070522484}
   m_Father: {fileID: 1351534881}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8064,6 +8066,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424251107}
   m_CullTransparentMesh: 1
+--- !u!1 &429275037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429275038}
+  - component: {fileID: 429275040}
+  - component: {fileID: 429275039}
+  m_Layer: 5
+  m_Name: Star
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &429275038
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429275037}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000799, y: 1.0000799, z: 1.0000799}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 284171386}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 17.1, y: 32.8}
+  m_SizeDelta: {x: 28.02, y: 28.02}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &429275039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429275037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f338ff2beda15384c89c1acd01476b45, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &429275040
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429275037}
+  m_CullTransparentMesh: 1
 --- !u!1 &429612040
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,7 +8257,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 302.85, y: 50}
+  m_SizeDelta: {x: 316.69, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433693675
 MonoBehaviour:
@@ -10794,7 +10872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1365958950}
   btn: {fileID: 1856784399}
-  cost: 800
+  cost: 500
 --- !u!222 &535005445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12479,7 +12557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 2128354878}
   btn: {fileID: 633078966}
-  cost: 25000
+  cost: 10
 --- !u!114 &633078966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12524,30 +12602,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 821465935}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033764663}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 80726852}
         m_TargetAssemblyTypeName: CashController, Assembly-CSharp
         m_MethodName: AddPacer
@@ -12596,7 +12650,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 420564086}
+      - m_Target: {fileID: 284171387}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: set_interactable
         m_Mode: 6
@@ -15116,7 +15170,7 @@ MonoBehaviour:
   - Associate Beater
   - Beat Manager
   - Senior Vice Beater
-  - CBO
+  - <wave>CBO</wave>
   rankNewsMessages:
   - Tech startup MyBeat gets FDA approval following clinical trials.
   - MyBeat's artificial hearts are giving new life to their first 500 customers.
@@ -15124,14 +15178,14 @@ MonoBehaviour:
     for the S&P 500.
   - MyBeat announces it has pumped it's 1 billionth gallon of blood.
   - Most insurance companies now include MyBeat as preventative care.
-  - Milleniels prefer artificial hearts and it's killing the Organ Donor Industry.
+  - Millenials prefer artificial hearts and it's killing the Organ Donor Industry.
   rankXp:
   - 0
   - 500
   - 1000
   - 2500
   - 5000
-  - 10000
+  - 7500
   currentRank: 0
   currentRankStr: 
   name: Civilian
@@ -15532,7 +15586,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1703810028}
   m_Father: {fileID: 1351534881}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16581,7 +16636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 974693057}
   btn: {fileID: 246695153}
-  cost: 800
+  cost: 600
 --- !u!222 &808119741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18790,7 +18845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 91392268}
   btn: {fileID: 1457545502}
-  cost: 7000
+  cost: 4500
 --- !u!1 &910463664
 GameObject:
   m_ObjectHideFlags: 0
@@ -19332,7 +19387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1114727945}
   btn: {fileID: 1659483714}
-  cost: 18000
+  cost: 7000
 --- !u!1 &935709522
 GameObject:
   m_ObjectHideFlags: 0
@@ -20488,7 +20543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 945310616}
   btn: {fileID: 1815160024}
-  cost: 5000
+  cost: 3500
 --- !u!1 &1000518436
 GameObject:
   m_ObjectHideFlags: 0
@@ -20544,7 +20599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1543386394}
   btn: {fileID: 1000518439}
-  cost: 10000
+  cost: 1
 --- !u!114 &1000518439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20589,30 +20644,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 821465935}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1033764663}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 80726852}
         m_TargetAssemblyTypeName: CashController, Assembly-CSharp
         m_MethodName: AddPacer
@@ -21364,7 +21395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1033692162}
   btn: {fileID: 1455965170}
-  cost: 22000
+  cost: 9000
 --- !u!1 &1033422242
 GameObject:
   m_ObjectHideFlags: 0
@@ -21615,7 +21646,7 @@ MonoBehaviour:
   ranks:
   - Recruit
   - Private Beater
-  - Chief Petty Warrant Beater
+  - Warrant Beater
   - Major Beater
   - Brigadier Beater
   - Beater in Chief
@@ -21631,11 +21662,11 @@ MonoBehaviour:
   - Victory!  Mothership destroyed in boarding action by lone Cyborg Comando.
   rankXp:
   - 0
-  - 500
-  - 1000
   - 2500
   - 5000
+  - 7500
   - 10000
+  - 15000
   currentRank: 0
   currentRankStr: 
   name: Soldier
@@ -21853,7 +21884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1399857919}
   btn: {fileID: 1022637866}
-  cost: 2000
+  cost: 1500
 --- !u!1 &1033850008
 GameObject:
   m_ObjectHideFlags: 0
@@ -21919,7 +21950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 666190516}
   btn: {fileID: 773348810}
-  cost: 12000
+  cost: 10000
 --- !u!1 &1058457470
 GameObject:
   m_ObjectHideFlags: 0
@@ -22053,6 +22084,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058457470}
+  m_CullTransparentMesh: 1
+--- !u!1 &1070522483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070522484}
+  - component: {fileID: 1070522486}
+  - component: {fileID: 1070522485}
+  m_Layer: 5
+  m_Name: Star
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1070522484
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070522483}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000799, y: 1.0000799, z: 1.0000799}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 420564085}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 17.1, y: 32.8}
+  m_SizeDelta: {x: 28.02, y: 28.02}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1070522485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070522483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f338ff2beda15384c89c1acd01476b45, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1070522486
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070522483}
   m_CullTransparentMesh: 1
 --- !u!1 &1094164064
 GameObject:
@@ -23183,7 +23290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1882016533}
   btn: {fileID: 502856737}
-  cost: 25000
+  cost: 15000
 --- !u!1 &1183617989
 GameObject:
   m_ObjectHideFlags: 0
@@ -23375,7 +23482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 750629748}
   btn: {fileID: 1686431514}
-  cost: 5000
+  cost: 2500
 --- !u!222 &1186961109
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24160,6 +24267,9 @@ RectTransform:
   - {fileID: 821465936}
   - {fileID: 1033764664}
   - {fileID: 1437299465}
+  - {fileID: 535005443}
+  - {fileID: 1584415817}
+  - {fileID: 2054077527}
   - {fileID: 1838279052}
   - {fileID: 1281377454}
   - {fileID: 1872781557}
@@ -24178,9 +24288,6 @@ RectTransform:
   - {fileID: 682579815}
   - {fileID: 516002113}
   - {fileID: 1965355136}
-  - {fileID: 535005443}
-  - {fileID: 1584415817}
-  - {fileID: 2054077527}
   m_Father: {fileID: 954850046}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24727,7 +24834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 2070406253}
   btn: {fileID: 1322425210}
-  cost: 6000
+  cost: 4000
 --- !u!1 &1282348385
 GameObject:
   m_ObjectHideFlags: 0
@@ -24995,7 +25102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 2014132461}
   btn: {fileID: 1319183052}
-  cost: 10000
+  cost: 7500
 --- !u!222 &1294811153
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25856,7 +25963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1295418733}
   btn: {fileID: 763959360}
-  cost: 400
+  cost: 500
 --- !u!1 &1331239007
 GameObject:
   m_ObjectHideFlags: 0
@@ -28391,7 +28498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 955927630}
   btn: {fileID: 1881453116}
-  cost: 5000
+  cost: 3000
 --- !u!1 &1442845069
 GameObject:
   m_ObjectHideFlags: 0
@@ -30601,7 +30708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1585136980}
   btn: {fileID: 1916151768}
-  cost: 4000
+  cost: 5000
 --- !u!1 &1559677727
 GameObject:
   m_ObjectHideFlags: 0
@@ -30929,7 +31036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1988489105}
   btn: {fileID: 1510536674}
-  cost: 8000
+  cost: 4000
 --- !u!222 &1584415819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32792,6 +32899,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697630462}
   m_CullTransparentMesh: 1
+--- !u!1 &1703810027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703810028}
+  - component: {fileID: 1703810030}
+  - component: {fileID: 1703810029}
+  m_Layer: 5
+  m_Name: Star
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1703810028
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703810027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 765536317}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 17.1, y: 32.8}
+  m_SizeDelta: {x: 28.02, y: 28.02}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1703810029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703810027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f338ff2beda15384c89c1acd01476b45, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1703810030
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703810027}
+  m_CullTransparentMesh: 1
 --- !u!1 &1709927277
 GameObject:
   m_ObjectHideFlags: 0
@@ -33399,7 +33582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 1243327860}
   btn: {fileID: 1960291643}
-  cost: 1500
+  cost: 500
 --- !u!222 &1732912880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34429,8 +34612,8 @@ MonoBehaviour:
   - Resident Beater
   - 'Beating Practitioner '
   - Beatologist
-  - Ph. B
-  - Beat Surgeon General
+  - Beatmaster General
+  - Ph. Beat
   rankNewsMessages:
   - MyBeat artificial hearts have started to become part of standard treatment in
     many hospitals.
@@ -34447,11 +34630,11 @@ MonoBehaviour:
     HIV, and tuberculosis.
   rankXp:
   - 0
-  - 500
   - 1000
-  - 2500
-  - 5000
-  - 10000
+  - 2000
+  - 4000
+  - 7000
+  - 11000
   currentRank: 0
   currentRankStr: 
   name: Patient
@@ -36206,7 +36389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 314784264}
   btn: {fileID: 797871498}
-  cost: 20000
+  cost: 12000
 --- !u!1 &1881453114
 GameObject:
   m_ObjectHideFlags: 0
@@ -38264,7 +38447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 114726781}
   btn: {fileID: 2105392598}
-  cost: 30000
+  cost: 19000
 --- !u!1 &1965571928
 GameObject:
   m_ObjectHideFlags: 0
@@ -38400,7 +38583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: New terms of service allow us to mine a small amount of bitcoin in the
-    app with each beat.
+    app with each beat. (Finance Dept. reduces sales tax)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38427,7 +38610,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.5
+  m_fontSize: 13
   m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -39475,7 +39658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 86734354}
   btn: {fileID: 480362946}
-  cost: 25000
+  cost: 10000
 --- !u!222 &2054077529
 CanvasRenderer:
   m_ObjectHideFlags: 0
