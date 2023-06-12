@@ -15413,7 +15413,7 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 5000
+  maxEarnRate: 80
   lossRate: 80
   ranks:
   - Novice
@@ -21980,7 +21980,7 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 5000
+  maxEarnRate: 300
   lossRate: 100
   ranks:
   - Recruit
@@ -35376,7 +35376,7 @@ MonoBehaviour:
   recoveryRate: 2
   damageRate: 0.5
   xp: 0
-  maxEarnRate: 5000
+  maxEarnRate: 152
   lossRate: 100
   ranks:
   - Med Student
