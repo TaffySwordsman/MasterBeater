@@ -153,6 +153,36 @@ public class CashController : MonoBehaviour
     public void AddLube() { IntravanousLubricant += 1; }
     public void AddValve() { EmergencyReleaseValve += 1; }
     public void AddTerms() { RevisedTermsOfService += 1; }
+
+    public void AddEmployee() 
+    {
+        if(MarketingSpecialists == 0)
+            MarketingSpecialists = 1;
+        else if(CustomerService == 0)
+            CustomerService = 1;
+        else if(SalesReps == 0)
+            SalesReps = 1;
+    }
+
+    public void AddHR() 
+    {
+        if(Recruiter == 0)
+            Recruiter = 1;
+        else if(HRGeneralists == 0)
+            HRGeneralists = 1;
+        else if(Pinkertons == 0)
+            Pinkertons = 1;
+    }
+
+    public void AddFinance() 
+    {
+        if(Accountants == 0)
+            Accountants = 1;
+        else if(IRSInvestigators == 0)
+            IRSInvestigators = 1;
+        else if(Senators == 0)
+            Senators = 1;
+    }
     
     private static CashController _current;
 
