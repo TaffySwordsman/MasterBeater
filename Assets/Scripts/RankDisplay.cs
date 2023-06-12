@@ -9,17 +9,29 @@ public class RankDisplay : MonoBehaviour
     string heart1 = "Beat Novice";
     string heart2 = "Beat Patient";
     string heart3 = "Beat Recruit";
+    public GameObject star1, star2, star3, upgradeItem;
+    bool complete = false;
+    bool upgraded = false;
+
     // Start is called before the first frame update
     void Start()
     {
         text = gameObject.GetComponent<TextMeshProUGUI>();
-        
+    }
+
+    public void Update()
+    {
+        if(star1.activeSelf && star2.activeSelf && star3.activeSelf && !upgraded)
+        {
+            complete = true;
+            upgradeItem.SetActive(true);
+        }
     }
 
     public void UpdateRank(string rank, string name)
     {
-        if(rank == "Master Beater")
-            text.text = "<rainb><wave>" + rank + "</wave></rainb>";
+        if(upgraded)
+            text.text = "<rainb><wave>Master Beater</wave></rainb>";
         else
             text.text = rank;
 
@@ -35,13 +47,20 @@ public class RankDisplay : MonoBehaviour
 
     public void SetCurrentRank(string name)
     {
-        if(name == "Civilian")
+        if(upgraded)
+            text.text = "<rainb><wave>Master Beater</wave></rainb>";
+        else
+        {
+            if(name == "Civilian")
             text.text = heart1;
         
-        if(name == "Patient")
-            text.text = heart2;
-        
-        if(name == "Soldier")
-            text.text = heart3;
+            if(name == "Patient")
+                text.text = heart2;
+            
+            if(name == "Soldier")
+                text.text = heart3;
+        }
     }
+
+    public void UpgradeBought() { upgraded = true; text.text = "<rainb><wave>Master Beater</wave></rainb>"; }
 }

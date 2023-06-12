@@ -52,6 +52,7 @@ public class HeartController : MonoBehaviour
     public float[] rankXp;
     public int currentRank = 0;
     public string currentRankStr;
+    public GameObject star;
 
     private List<float> beats;
     private float lastHumanBeat = 0f;
@@ -75,6 +76,8 @@ public class HeartController : MonoBehaviour
     public float mineRate = 5f;                 // $ minned per beat per level of TOS.
     public float lawyerDefense = 20f;           // $ minned per beat per level of TOS.
     public float earlyWarningLevel = 3f;
+    [SerializeField] public GameObject warningObj;
+    [SerializeField] public GameObject dangerObj; 
 
     private Random rng;
 
@@ -246,6 +249,8 @@ public class HeartController : MonoBehaviour
                 rankDisplay.UpdateRank(currentRankStr, name);
                 news.RunHeadline(rankNewsMessages[currentRank]);
             }
+            if(currentRank == ranks.Count() - 1)
+                star.SetActive(true);
         }
     }
 
@@ -263,9 +268,13 @@ public class HeartController : MonoBehaviour
     IEnumerator RunBPMEvent(string message, float bpm, float warning, float length) {
         Debug.Log("BPM Event Coming");
         news.RunHeadline(message);
+        warningObj.SetActive(true);
         yield return new WaitForSeconds(warning);
+        warningObj.SetActive(false);
+        dangerObj.SetActive(true);
         targetBPM = bpm;
         yield return new WaitForSeconds(length);
+        dangerObj.SetActive(false);
         Normalize();
         Debug.Log("BPM Event Ended");
     }
@@ -273,9 +282,13 @@ public class HeartController : MonoBehaviour
     IEnumerator RunStrengthEvent(string message, float newStrength, float warning, float length) {
         Debug.Log("Strength Event Coming");
         news.RunHeadline(message);
+        warningObj.SetActive(true);
         yield return new WaitForSeconds(warning);
+        warningObj.SetActive(false);
+        dangerObj.SetActive(true);
         SetBeatStrength(newStrength);
         yield return new WaitForSeconds(length);
+        dangerObj.SetActive(false);
         Normalize();
         Debug.Log("Strength Event Ended");
     }

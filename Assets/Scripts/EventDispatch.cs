@@ -55,6 +55,10 @@ public class EventDispatch : MonoBehaviour
     public float averageWait = 40;
     public float waitRange = 20;
     private float nextWait;
+
+    [SerializeField] public GameObject warning;
+    [SerializeField] public GameObject danger;   
+    
     private float lastTime = 0f;
     
     private Random rng;
