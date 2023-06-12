@@ -5450,6 +5450,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 433693678}
+        m_TargetAssemblyTypeName: RankDisplay, Assembly-CSharp
+        m_MethodName: SetCurrentRank
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Soldier
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &284171388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7924,6 +7936,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 433693678}
+        m_TargetAssemblyTypeName: RankDisplay, Assembly-CSharp
+        m_MethodName: SetCurrentRank
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Patient
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &420564087
@@ -10815,7 +10839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 424.2, y: -346.00003}
+  m_AnchoredPosition: {x: 430.5, y: -251.18}
   m_SizeDelta: {x: 81.49, y: 31.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536135258
@@ -12283,7 +12307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708.95044, y: -15}
+  m_AnchoredPosition: {x: -448, y: -15}
   m_SizeDelta: {x: 102.11, y: 70.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616037043
@@ -12299,7 +12323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12455,7 +12479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 2128354878}
   btn: {fileID: 633078966}
-  cost: 50000
+  cost: 25000
 --- !u!114 &633078966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15110,6 +15134,7 @@ MonoBehaviour:
   - 10000
   currentRank: 0
   currentRankStr: 
+  name: Civilian
   autoBeatRevUp: 5
   autoBeatRevReduction: 1
   autoBeatRate: 1
@@ -15606,6 +15631,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 433693678}
+        m_TargetAssemblyTypeName: RankDisplay, Assembly-CSharp
+        m_MethodName: SetCurrentRank
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Civilian
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &765536319
@@ -19999,7 +20036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 563.11, y: -15}
+  m_AnchoredPosition: {x: 554, y: -15}
   m_SizeDelta: {x: 393.79, y: 70.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970974270
@@ -20015,7 +20052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21601,6 +21638,7 @@ MonoBehaviour:
   - 10000
   currentRank: 0
   currentRankStr: 
+  name: Soldier
   autoBeatRevUp: 5
   autoBeatRevReduction: 1
   autoBeatRate: 1
@@ -34416,6 +34454,7 @@ MonoBehaviour:
   - 10000
   currentRank: 0
   currentRankStr: 
+  name: Patient
   autoBeatRevUp: 5
   autoBeatRevReduction: 1
   autoBeatRate: 1

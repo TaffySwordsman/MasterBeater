@@ -15,7 +15,10 @@ public class UIController : MonoBehaviour
     {
     }
 
-    public void SetHeart(HeartController newHeart) { heart = newHeart;}
+    public void SetHeart(HeartController newHeart)
+    { 
+        heart = newHeart;
+    }
     // Update is called once per frame
     void Update()
     {

@@ -55,7 +55,8 @@ public class HeartController : MonoBehaviour
 
     private List<float> beats;
     private float lastHumanBeat = 0f;
-    private float lastRelease = -50f;              // Time of last release.
+    private float lastRelease = -50f; 
+    public string name;             // Time of last release.
 
     private RectTransform rt;
 
@@ -87,7 +88,7 @@ public class HeartController : MonoBehaviour
         beats.Add(0f);
         beats.Add(0f);
         currentRankStr = ranks[currentRank];
-        rankDisplay.UpdateRank(currentRankStr);
+        rankDisplay.UpdateRank(currentRankStr, name);
         audioData = GetComponent<AudioSource>();
 
         EventDispatch.current.OnNormalize += () => Normalize();
@@ -242,7 +243,7 @@ public class HeartController : MonoBehaviour
             if (xp >= rankXp[currentRank+1]) {
                 currentRank += 1;
                 currentRankStr = ranks[currentRank];
-                rankDisplay.UpdateRank(currentRankStr);
+                rankDisplay.UpdateRank(currentRankStr, name);
                 news.RunHeadline(rankNewsMessages[currentRank]);
             }
         }
