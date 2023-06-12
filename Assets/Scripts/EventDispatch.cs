@@ -75,15 +75,15 @@ public class EventDispatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastTime > nextWait) {
-            SetWait();
+        // if (Time.time - lastTime > nextWait) {
+        //     SetWait();
             
-            if (rng.NextDouble() > 0.5) {
-                StartCoroutine(RunBPMEvent(500, 3, 5));
-            } else {
-                StartCoroutine(RunStrengthEvent(500, 3, 5));
-            }
-        }
+        //     if (rng.NextDouble() > 0.5) {
+        //         StartCoroutine(RunBPMEvent(500, 3, 5));
+        //     } else {
+        //         StartCoroutine(RunStrengthEvent(500, 3, 5));
+        //     }
+        // }
     }
 
     IEnumerator RunBPMEvent(float targetBPM, float warning, float length) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Random=System.Random;
 
 public class HeartController : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class HeartController : MonoBehaviour
     public News news;
     private Vignette vignette;
     private AudioSource audioData;
+
+
+    [Header("Events")]
+    public string[] bpmEventMessages;
+    public float minElevatedBPM = 40f;
+    public float maxElevatedBPM = 80f;
+    public string[] strengthEventMessages;
+    public float minStengthBoost = 20f;
+    public float maxStrengthBoost = 60f;
 
     [Header("Cardio")]
     public float systolic = 120f;
@@ -21,6 +31,8 @@ public class HeartController : MonoBehaviour
     public float normalBPM = 20f;
     private float targetBPM;
     public float BPM;
+    public float averageWait = 40f;
+    public float waitRange = 20f;
 
     [Header("Health")]
     public float health = 100f;
@@ -61,10 +73,14 @@ public class HeartController : MonoBehaviour
     public float releasePenaltyRecution = 2f;   // Reduction of the penalty per level of emergency valve.
     public float mineRate = 5f;                 // $ minned per beat per level of TOS.
     public float lawyerDefense = 20f;           // $ minned per beat per level of TOS.
+    public float earlyWarningLevel = 3f;
+
+    private Random rng;
 
     // Start is called before the first frame update
     void Start()
     {
+        rng = new Random();
         rt = gameObject.GetComponent<RectTransform>();
         Normalize();
         beats = new List<float>();
@@ -163,6 +179,21 @@ public class HeartController : MonoBehaviour
         }
         health = Mathf.Max(health, 0f);
         vignette.intensity.value = 0.53f - health / 100f;
+
+        // Event loop
+        if (Time.time - lastTime > nextWait) {
+            SetWait();
+            
+            if (rng.NextDouble() > 0.5) {
+                string message = bpmEventMessages[rng.Next(0, bpmEventMessages.Count())] + "  Blood pressure decreasing.";
+                float bpm = (maxElevatedBPM - minElevatedBPM) * (float) rng.NextDouble() + minElevatedBPM;
+                StartCoroutine(RunBPMEvent(message, bpm, CashController.current.BrainInterface * earlyWarningLevel, (float) rng.NextDouble() * 10f + 5f));
+            } else {
+                string message = strengthEventMessages[rng.Next(0, strengthEventMessages.Count())] + "  Beat strength increasing.";
+                float str = (maxStrengthBoost - minStengthBoost) * (float) rng.NextDouble() + minStengthBoost;
+                StartCoroutine(RunStrengthEvent(message, str, CashController.current.BrainInterface * earlyWarningLevel, (float) rng.NextDouble() * 10f + 5f));
+            }
+        }
     }
 
     public void MouseDown() {
@@ -216,4 +247,36 @@ public class HeartController : MonoBehaviour
             }
         }
     }
+
+    // ---------------------- Events
+
+    private float lastTime = 0f;
+    private float nextWait = 70f;
+
+    private void SetWait() {
+        lastTime = Time.time;
+        nextWait = averageWait + waitRange * 2f * ((float) rng.NextDouble() - 0.5f);
+        Debug.Log("Next wait is " + nextWait);
+    }
+
+    IEnumerator RunBPMEvent(string message, float bpm, float warning, float length) {
+        Debug.Log("BPM Event Coming");
+        news.RunHeadline(message);
+        yield return new WaitForSeconds(warning);
+        targetBPM = bpm;
+        yield return new WaitForSeconds(length);
+        Normalize();
+        Debug.Log("BPM Event Ended");
+    }
+
+    IEnumerator RunStrengthEvent(string message, float newStrength, float warning, float length) {
+        Debug.Log("Strength Event Coming");
+        news.RunHeadline(message);
+        yield return new WaitForSeconds(warning);
+        SetBeatStrength(newStrength);
+        yield return new WaitForSeconds(length);
+        Normalize();
+        Debug.Log("Strength Event Ended");
+    }
+
 }

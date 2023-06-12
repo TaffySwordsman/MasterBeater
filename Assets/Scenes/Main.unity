@@ -12188,6 +12188,16 @@ MonoBehaviour:
   rankDisplay: {fileID: 433693678}
   volume: {fileID: 0}
   news: {fileID: 1812987909}
+  bpmEventMessages:
+  - BPM Message 1
+  - BPM Message 2
+  minElevatedBPM: 40
+  maxElevatedBPM: 80
+  strengthEventMessages:
+  - STR Message 1
+  - STR Message 2
+  minStengthBoost: 20
+  maxStrengthBoost: 60
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
@@ -12195,6 +12205,8 @@ MonoBehaviour:
   beatStrength: 15
   normalBPM: 20
   BPM: 0
+  averageWait: 40
+  waitRange: 20
   health: 100
   safeRange: 0.4
   recoveryRate: 2
@@ -12239,6 +12251,7 @@ MonoBehaviour:
   releasePenaltyRecution: 2
   mineRate: 0.00019
   lawyerDefense: 20
+  earlyWarningLevel: 3
 --- !u!224 &763899657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17519,6 +17532,12 @@ MonoBehaviour:
   rankDisplay: {fileID: 433693678}
   volume: {fileID: 0}
   news: {fileID: 0}
+  bpmEventMessages: []
+  minElevatedBPM: 40
+  maxElevatedBPM: 80
+  strengthEventMessages: []
+  minStengthBoost: 20
+  maxStrengthBoost: 60
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
@@ -17526,6 +17545,8 @@ MonoBehaviour:
   beatStrength: 15
   normalBPM: 20
   BPM: 0
+  averageWait: 40
+  waitRange: 20
   health: 100
   safeRange: 0.4
   recoveryRate: 2
@@ -17563,6 +17584,7 @@ MonoBehaviour:
   releasePenaltyRecution: 2
   mineRate: 0.00019
   lawyerDefense: 20
+  earlyWarningLevel: 3
 --- !u!1 &1033692160
 GameObject:
   m_ObjectHideFlags: 0
@@ -27220,6 +27242,12 @@ MonoBehaviour:
   rankDisplay: {fileID: 433693678}
   volume: {fileID: 0}
   news: {fileID: 0}
+  bpmEventMessages: []
+  minElevatedBPM: 40
+  maxElevatedBPM: 80
+  strengthEventMessages: []
+  minStengthBoost: 20
+  maxStrengthBoost: 60
   systolic: 120
   diastolic: 80
   tgtSystolic: 120
@@ -27227,6 +27255,8 @@ MonoBehaviour:
   beatStrength: 15
   normalBPM: 20
   BPM: 0
+  averageWait: 40
+  waitRange: 20
   health: 100
   safeRange: 0.4
   recoveryRate: 2
@@ -27264,6 +27294,7 @@ MonoBehaviour:
   releasePenaltyRecution: 2
   mineRate: 0.00019
   lawyerDefense: 20
+  earlyWarningLevel: 3
 --- !u!1 &1773309057
 GameObject:
   m_ObjectHideFlags: 0
@@ -27737,11 +27768,11 @@ MonoBehaviour:
     to heart attacks in customers.  Keep within the safe range to avoid overburdening
     the legal department.  \t\t\t  \t\t\tHeart beats by our opperators are shown
     to be more effective and healthy than your body's natural rhythm.  \t\t\tEarn
-    money by maintaining optimal blood pressure.    \t\t\t  \t\t\tWe're a company
-    built on self-starters.  Hire new employees capable of working in our fast-paced
-    office environment to increase earnings.\t\t  \t\t\tMyBeat is on the bleading
-    edge of MedTech, we stay on the bleeding edge.  Invest in upgrades to improve
-    our service and lower opperating costs."
+    money by maintaining optimal blood pressure with a consistent heart beat.   
+    \t\t\t  \t\t\tWe're a company built on self-starters.  Hire new employees capable
+    of working in our fast-paced office environment to increase earnings.\t\t  \t\t\tMyBeat
+    is on the bleading edge of MedTech, we stay on the bleeding edge.  Invest in
+    upgrades to improve our service and lower opperating costs."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ae23adc23df5be64782b9617bf206c2f, type: 2}
   m_sharedMaterial: {fileID: 2373021276287785316, guid: ae23adc23df5be64782b9617bf206c2f, type: 2}
