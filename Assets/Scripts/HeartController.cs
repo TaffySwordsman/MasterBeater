@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class HeartController : MonoBehaviour
 {
     public RankDisplay rankDisplay;
+    public PostProcessVolume volume;
+    private Vignette vignette;
     private AudioSource audioData;
 
     [Header("Cardio")]
@@ -30,6 +33,7 @@ public class HeartController : MonoBehaviour
     [Header("Score")]
     public float xp = 0f;
     public float maxEarnRate = 100f;
+    public float lossRate = 100f;
     public string[] ranks;
     public string[] rankNewsMessages;
     public float[] rankXp;
@@ -55,6 +59,7 @@ public class HeartController : MonoBehaviour
     public float releasePenalty = 10f;          // Penalty to beat strength for emergency release.
     public float releasePenaltyRecution = 2f;   // Reduction of the penalty per level of emergency valve.
     public float mineRate = 5f;                 // $ minned per beat per level of TOS.
+    public float lawyerDefense = 20f;           // $ minned per beat per level of TOS.
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +76,15 @@ public class HeartController : MonoBehaviour
         EventDispatch.current.OnNormalize += () => Normalize();
         EventDispatch.current.OnSetBPM += (newBPM) => SetTargetBPM(newBPM);
         EventDispatch.current.OnSetBeatStrength += (newStrength) => SetBeatStrength(newStrength);
+
+        vignette = ScriptableObject.CreateInstance<Vignette>();
+        vignette.enabled.Override(true);
+        vignette.intensity.Override(0f);
+        volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, vignette);
+    }
+
+    void OnDestroy() {
+        RuntimeUtilities.DestroyVolume(volume, true, true);
     }
 
     // Update is called once per frame
@@ -128,6 +142,11 @@ public class HeartController : MonoBehaviour
             beats.RemoveAt(0);
         }
 
+        if (health < 1f) { // Death Penalty
+            float realLoss = lossRate - CashController.current.MalpracticeDefenseLawyers * lawyerDefense;
+            CashController.current.money = Mathf.Max(CashController.current.money - lossRate * Time.deltaTime, 0f);
+        }
+
         // Health
         if (systolic > maxSafe) {
             health -= (systolic - maxSafe) * Time.deltaTime * (damageRate - surrogateResistance * (float) CashController.current.PerfluorocarbonSurogate);
@@ -136,6 +155,9 @@ public class HeartController : MonoBehaviour
         } else {
             health = Mathf.Min(health + recoveryRate * Time.deltaTime, 100f);
         }
+        health = Mathf.Max(health, 0f);
+        vignette.intensity.value = 0.66f - health / 100f;
+        Debug.Log(vignette.intensity.value);
     }
 
     public void MouseDown() {
