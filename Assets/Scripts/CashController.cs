@@ -144,6 +144,15 @@ public class CashController : MonoBehaviour
         }
         return false;
     }
+
+    public void AddPacer() { AutoPacer += 1; }
+    public void AddInterface() { BrainInterface += 1; }
+    public void AddModulator() { BeatModulator += 1; }
+    public void AddLawyers() { MalpracticeDefenseLawyers += 1; }
+    public void AddSurrogate() { PerfluorocarbonSurogate += 1; }
+    public void AddLube() { IntravanousLubricant += 1; }
+    public void AddValve() { EmergencyReleaseValve += 1; }
+    public void AddTerms() { RevisedTermsOfService += 1; }
     
     private static CashController _current;
 

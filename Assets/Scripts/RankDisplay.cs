@@ -15,6 +15,9 @@ public class RankDisplay : MonoBehaviour
 
     public void UpdateRank(string rank)
     {
-        text.text = "<rainb><wave>" + rank + "</wave></rainb>";
+        if(rank == "Master Beater")
+            text.text = "<rainb><wave>" + rank + "</wave></rainb>";
+        else
+            text.text = rank;
     }
 }
