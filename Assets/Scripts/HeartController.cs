@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HeartController : MonoBehaviour
 {
+    public RankDisplay rankDisplay;
+
     [Header("Cardio")]
     public float systolic = 120f;
     public float diastolic = 80f;
@@ -62,6 +64,7 @@ public class HeartController : MonoBehaviour
         beats.Add(0f);
         beats.Add(0f);
         currentRankStr = ranks[currentRank];
+        rankDisplay.UpdateRank(currentRankStr);
 
         EventDispatch.current.OnNormalize += () => Normalize();
         EventDispatch.current.OnSetBPM += (newBPM) => SetTargetBPM(newBPM);
@@ -178,10 +181,8 @@ public class HeartController : MonoBehaviour
             if (xp >= rankXp[currentRank+1]) {
                 currentRank += 1;
                 currentRankStr = ranks[currentRank];
-                Debug.Log("Rank: " + currentRankStr);
                 Debug.Log(rankNewsMessages[currentRank]);
             }
         }
     }
-
 }
